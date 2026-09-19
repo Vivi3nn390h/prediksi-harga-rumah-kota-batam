@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form Prediksi Harga - Rumah Kota Batam</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span>Prediksi Rumah Batam</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="prediksi.html" class="active">Prediksi Harga</a></li>
+        <li><a href="model-info.html">Informasi Model</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Banner -->
+  <header style="background-color: var(--primary-color); color: #ffffff; padding: 30px 0;">
+    <div class="container">
+      <h1 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 6px;">Kalkulator Prediksi Harga Rumah</h1>
+      <p style="color: #cbd5e1; font-size: 0.95rem;">
+        Masukkan karakteristik fisik dan lokasi properti untuk mendapatkan estimasi nilai pasar berbasis machine learning.
+      </p>
+    </div>
+  </header>
+
+  <!-- Form & Result Section -->
+  <main class="container section">
+    <div class="form-page-layout">
+      
+      <!-- Left Column: 3-Group Input Form -->
+      <div class="form-card">
+        <div id="alertContainer"></div>
+
+        <form id="predictForm" novalidate>
+          
+          <!-- Group 1: Informasi Properti -->
+          <fieldset class="form-group-fieldset">
+            <legend>📐 1. Informasi Properti</legend>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="land_area">Luas Tanah (m²)</label>
+                <div class="unit-input">
+                  <input type="number" id="land_area" name="land_area" min="20" max="2000" step="any" placeholder="Contoh: 120" required>
+                  <span class="unit-suffix">m²</span>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="building_area">Luas Bangunan (m²)</label>
+                <div class="unit-input">
+                  <input type="number" id="building_area" name="building_area" min="20" max="2000" step="any" placeholder="Contoh: 90" required>
+                  <span class="unit-suffix">m²</span>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group 2: Fasilitas Rumah -->
+          <fieldset class="form-group-fieldset">
+            <legend>🛏️ 2. Fasilitas Rumah</legend>
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="bedroom">Jumlah Kamar Tidur</label>
+                <input type="number" id="bedroom" name="bedroom" min="1" max="20" placeholder="Contoh: 3" required>
+              </div>
+              <div class="form-field">
+                <label for="bathroom">Jumlah Kamar Mandi</label>
+                <input type="number" id="bathroom" name="bathroom" min="1" max="20" placeholder="Contoh: 2" required>
+              </div>
+              <div class="form-field full-width">
+                <label for="floor_count">Jumlah Lantai</label>
+                <input type="number" id="floor_count" name="floor_count" min="1" max="10" placeholder="Contoh: 1" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Group 3: Lokasi Properti -->
+          <fieldset class="form-group-fieldset">
+            <legend>📍 3. Lokasi Properti</legend>
+            <div class="form-field">
+              <label for="location">Zona / Kecamatan di Kota Batam</label>
+              <select id="location" name="location" required>
+                <option value="">-- Pilih Zona Lokasi --</option>
+                <option value="Batam Center">Batam Center</option>
+                <option value="Batu Aji">Batu Aji</option>
+                <option value="Batu Ampar">Batu Ampar</option>
+                <option value="Bengkong">Bengkong</option>
+                <option value="Lubuk Baja">Lubuk Baja</option>
+                <option value="Nongsa">Nongsa</option>
+                <option value="Sagulung">Sagulung</option>
+                <option value="Sekupang">Sekupang</option>
+              </select>
+            </div>
+          </fieldset>
+
+          <!-- Actions -->
+          <div class="form-actions">
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">
+              ⚡ Hitung Prediksi Harga
+            </button>
+            <div class="form-actions-row">
+              <button type="button" id="btnDemo" class="btn btn-secondary">
+                💡 Isi dengan Contoh (Demo)
+              </button>
+              <button type="button" id="btnReset" class="btn btn-outline">
+                🗑️ Kosongkan Form
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+      <!-- Right Column: Prominent Prediction Result -->
+      <div>
+        <div id="resultCard" class="result-card">
+          <div class="empty-state">
+            <div class="empty-state-icon">🏠</div>
+            <h3>Belum Ada Hasil Prediksi</h3>
+            <p>Isi form spesifikasi rumah di sebelah kiri dan klik tombol <strong>Hitung Prediksi Harga</strong>.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        &copy; 2026 Sistem Prediksi Harga Rumah Kota Batam. Hak Cipta Dilindungi Penelitian Akademik.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/format.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/predict.js"></script>
+</body>
+</html>

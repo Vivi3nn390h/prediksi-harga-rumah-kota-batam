@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistem Prediksi Harga Rumah Kota Batam</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span>Prediksi Rumah Batam</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="prediksi.html">Prediksi Harga</a></li>
+        <li><a href="model-info.html">Informasi Model</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="badge-tag">Machine Learning</span>
+        <h1>Sistem Prediksi Harga Rumah Kota Batam</h1>
+        <p>
+          Estimasi harga properti berbasis data menggunakan Model Ensemble (Ridge Regression & Random Forest) yang dilatih dari 3.150 data transaksi rumah di Kota Batam.
+        </p>
+        <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+          <a href="prediksi.html" class="btn btn-accent">Mulai Prediksi Harga →</a>
+          <a href="model-info.html" class="btn btn-outline" style="color: #ffffff; border-color: rgba(255,255,255,0.3);">Lihat Performa Model</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Research & System Information Strip -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-value">3.150</div>
+          <div class="stat-label">Data Rumah Bersih Batam</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">8</div>
+          <div class="stat-label">Zona Lokasi Utama Batam</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">Ensemble</div>
+          <div class="stat-label">Ridge + Random Forest</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">0,4544</div>
+          <div class="stat-label">R² Score Evaluasi Model</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content: Workflow -->
+  <main class="container">
+    <section class="section">
+      <h2 class="section-title">Bagaimana Cara Kerjanya?</h2>
+      <p class="section-subtitle">Tiga langkah mudah untuk mendapatkan estimasi nilai pasar properti Anda</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="card-icon">1</div>
+          <h3>Input Spesifikasi Rumah</h3>
+          <p>Masukkan 6 karakteristik rumah meliputi Luas Tanah, Luas Bangunan, Jumlah Kamar Tidur, Kamar Mandi, Lantai, dan Zona Lokasi.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">2</div>
+          <h3>Feature Engineering & Inference</h3>
+          <p>Sistem secara otomatis menghitung rasio ruangan, rasio bangunan, melakukan one-hot encoding lokasi, dan meneruskannya ke pipeline model.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">3</div>
+          <h3>Hasil Estimasi Rupiah</h3>
+          <p>Model mengembalikan estimasi harga dalam Rupiah lengkap dengan estimasi harga per m² tanah dan rentang wajar (MAE).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Scope & System Boundary -->
+    <section class="section" style="padding-top: 0;">
+      <div class="card" style="background-color: var(--bg-muted); border-left: 4px solid var(--secondary-color);">
+        <h3 style="margin-bottom: 8px;">Batasan & Ruang Lingkup Sistem</h3>
+        <p style="font-size: 0.95rem; color: var(--text-main); margin-bottom: 12px;">
+          Website ini dibangun khusus sebagai media implementasi penelitian akademik skripsi untuk menguji performa algoritma Machine Learning pada pasar properti Kota Batam.
+        </p>
+        <ul style="padding-left: 20px; font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;">
+          <li>Bukan merupakan platform marketplace properti (tidak menyediakan fitur iklan, transaksi jual-beli, atau chat agen).</li>
+          <li>Prediksi dihasilkan berdasarkan pola historis dari 3.150 data rumah bersih di 8 kecamatan Batam.</li>
+          <li>Nilai prediksi berbentuk estimasi statistik dan tidak menggantikan appraisal resmi profesional.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Prediksi Rumah Batam</div>
+          <p class="footer-p">
+            Implementasi Penelitian Skripsi: Model Ensemble Berbasis Regresi Linear dan Random Forest untuk Prediksi Harga Rumah di Kota Batam.
+          </p>
+        </div>
+        <div class="footer-links">
+          <h4>Navigasi</h4>
+          <ul>
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="prediksi.html">Prediksi Harga</a></li>
+            <li><a href="model-info.html">Informasi Model</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Sistem Prediksi Harga Rumah Kota Batam. Hak Cipta Dilindungi Penelitian Akademik.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

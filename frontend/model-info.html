@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informasi Model & Metrik Evaluasi - Prediksi Rumah Batam</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="brand">
+        <span>Prediksi Rumah Batam</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="prediksi.html">Prediksi Harga</a></li>
+        <li><a href="model-info.html" class="active">Informasi Model</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Header Banner -->
+  <header style="background-color: var(--primary-color); color: #ffffff; padding: 30px 0;">
+    <div class="container">
+      <h1 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 6px;">Dokumentasi & Metrik Evaluasi Model</h1>
+      <p style="color: #cbd5e1; font-size: 0.95rem;">
+        Transparansi metodologi, perbandingan performa algoritma, dan hasil optimasi Out-of-Fold (OOF) Ensembling.
+      </p>
+    </div>
+  </header>
+
+  <!-- Content Section -->
+  <main class="container section">
+    
+    <!-- Section 1: Performance Comparison Table -->
+    <h2 class="section-title">Hasil Evaluasi 5-Fold Cross Validation</h2>
+    <p class="section-subtitle">Perbandingan performa model individu dan ensemble pada 3.150 data rumah Kota Batam</p>
+
+    <div style="overflow-x: auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Model / Algoritma</th>
+            <th>R² Score</th>
+            <th>MAE (Rupiah)</th>
+            <th>RMSE (Rupiah)</th>
+            <th>Bobot OOF Ensemble</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ridge Regression</strong></td>
+            <td>0,4107</td>
+            <td>Rp 1.130.387.741</td>
+            <td>Rp 2.547.456.340</td>
+            <td>0,00</td>
+          </tr>
+          <tr>
+            <td><strong>Random Forest Regressor</strong></td>
+            <td>0,4544</td>
+            <td>Rp 1.015.916.527</td>
+            <td>Rp 2.451.145.415</td>
+            <td>1,00</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Voting Regressor (Ensemble Final)</strong> ⭐</td>
+            <td><strong>0,4544</strong></td>
+            <td><strong>Rp 1.015.916.527</strong></td>
+            <td><strong>Rp 2.451.145.415</strong></td>
+            <td><strong>-</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Section 2: OOF & Non-Linear Market Explanation -->
+    <div class="grid-3" style="margin-top: 40px;">
+      <div class="card">
+        <div class="card-icon">📊</div>
+        <h3>Karakteristik Pasar Batam</h3>
+        <p>
+          Pasar properti Batam memiliki tingkat keberagaman non-linear yang tinggi akibat perbedaan harga signifikan antar zona (misalnya Batam Center vs Batu Aji) yang tidak dapat ditangkap secara optimal oleh regresi linear sederhana.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌲</div>
+        <h3>Keunggulan Random Forest</h3>
+        <p>
+          Random Forest mampu memisahkan variabel secara non-linear melalui keputusan bertingkat (decision trees), menghasilkan peningkatan R² Score hingga 0,4544 dan menekan MAE hingga Rp 1,015 Miliar.
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <h3>Hasil Optimasi OOF Weighting</h3>
+        <p>
+          Melalui optimasi Nelder-Mead pada Out-of-Fold predictions, bobot optimal menetapkan Ridge = 0,00 dan Random Forest = 1,00, memastikan prediksi ensemble menggunakan kinerja terbaik tanpa terdistorsi oleh residual regresi linear.
+        </p>
+      </div>
+    </div>
+
+    <!-- Section 3: Feature Engineering Details -->
+    <div class="card" style="margin-top: 30px;">
+      <h3 style="margin-bottom: 12px; color: var(--primary-color);">Daftar Feature yang Digunakan dalam Pipeline Model</h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px;">
+        Model dilatih menggunakan 14 fitur yang mencakup karakteristik fisik asli, fitur rasio komputasi, dan one-hot encoding lokasi:
+      </p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; font-size: 0.9rem;">
+        <div style="background: var(--bg-muted); padding: 12px; border-radius: 6px;">
+          <strong>Fitur Fisik Utama (5):</strong>
+          <ul style="margin-top: 4px; padding-left: 18px; color: var(--text-main);">
+            <li>Luas Tanah (`land_area`)</li>
+            <li>Luas Bangunan (`building_area`)</li>
+            <li>Jumlah Kamar Tidur (`bedroom`)</li>
+            <li>Jumlah Kamar Mandi (`bathroom`)</li>
+            <li>Jumlah Lantai (`floor_count`)</li>
+          </ul>
+        </div>
+        <div style="background: var(--bg-muted); padding: 12px; border-radius: 6px;">
+          <strong>Fitur Rasio Komputasi (2):</strong>
+          <ul style="margin-top: 4px; padding-left: 18px; color: var(--text-main);">
+            <li>Rasio Ruangan (`bedroom / bathroom`)</li>
+            <li>Rasio Bangunan (`building_area / land_area`)</li>
+          </ul>
+        </div>
+        <div style="background: var(--bg-muted); padding: 12px; border-radius: 6px;">
+          <strong>Fitur Encoded Lokasi (7):</strong>
+          <ul style="margin-top: 4px; padding-left: 18px; color: var(--text-main);">
+            <li>`loc_Batu Aji`, `loc_Batu Ampar`</li>
+            <li>`loc_Bengkong`, `loc_Lubuk Baja`</li>
+            <li>`loc_Nongsa`, `loc_Sagulung`, `loc_Sekupang`</li>
+            <li>*(Batam Center sebagai baseline)*</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        &copy; 2026 Sistem Prediksi Harga Rumah Kota Batam. Hak Cipta Dilindungi Penelitian Akademik.
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
