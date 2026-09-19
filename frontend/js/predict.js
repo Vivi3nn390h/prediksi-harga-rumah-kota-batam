@@ -127,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!resultCard) return;
 
     const inp = res.input_summary;
+    const disclaimerText = res?.disclaimer || 'Hasil prediksi merupakan estimasi berdasarkan pola data yang digunakan dalam penelitian dan bukan merupakan penilaian harga resmi properti.';
 
     resultCard.innerHTML = `
       <div class="result-header">
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </table>
 
       <div class="alert alert-warning" style="margin-bottom: 0;">
-        <strong>Disclaimer:</strong> ${escapeHtml(res.disclaimer)}
+        <strong>Disclaimer:</strong> ${escapeHtml(disclaimerText)}
       </div>
     `;
   }

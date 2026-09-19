@@ -10,6 +10,7 @@ from typing import Dict, Any
 from backend.config import MODEL_PATH, RESEARCH_METRICS
 from backend.preprocessing import prepare_input_dataframe
 from backend.utils import format_rupiah
+from backend.schemas import DISCLAIMER_TEXT
 
 class ModelService:
     def __init__(self, model_path: Path = MODEL_PATH):
@@ -59,7 +60,8 @@ class ModelService:
             "upper_bound_idr": upper_bound,
             "formatted_lower_bound": format_rupiah(lower_bound),
             "formatted_upper_bound": format_rupiah(upper_bound),
-            "input_summary": input_data
+            "input_summary": input_data,
+            "disclaimer": DISCLAIMER_TEXT
         }
 
 
